@@ -1,0 +1,10 @@
+pytest
+pylint
+black
+openai
+langchain
+chromadb
+tiktoken
+langchain_openai
+streamlit
+requests
