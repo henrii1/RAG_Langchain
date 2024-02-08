@@ -1,5 +1,21 @@
+import os
 import requests
+import openai
+
 from typing import List, Dict, Any
+from langchain_community.document_loaders.csv_loader import CSVLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings, OpenAI
+from langchain_community.vectorstores.chroma import Chroma
+from langchain_openai import ChatOpenAI
+from langchain.chains import RetrievalQA
+from langchain.output_parsers import ResponseSchema, StructuredOutputParser
+from langchain.prompts import PromptTemplate
+
+from dotenv import load_dotenv, find_dotenv
+_ = load_dotenv(find_dotenv()) # read local .env file
+
+api_key  = os.environ['OPENAI_API_KEY']
 
 def download_csv(url: str, file_name: str) -> Any:
     """ This function takes in the url to a csv file and a file name, chosen by the user"""
